@@ -38,6 +38,7 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @RestController
+@CrossOrigin
 @RequestMapping("/sys/permission")
 public class SysPermissionController {
 
@@ -215,7 +216,7 @@ public class SysPermissionController {
 	public Result<?> getUserPermissionByToken(HttpServletRequest request) {
 		Result<JSONObject> result = new Result<JSONObject>();
 		try {
-			//直接获取当前用户不适用前端token
+			//直接获取当前用户不使用前端token
 			LoginUser loginUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();
 			if (oConvertUtils.isEmpty(loginUser)) {
 				return Result.error("请登录系统！");
