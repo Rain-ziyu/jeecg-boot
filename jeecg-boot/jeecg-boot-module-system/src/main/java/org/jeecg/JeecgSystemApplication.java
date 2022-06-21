@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
 import java.net.InetAddress;
@@ -21,8 +22,8 @@ import java.net.UnknownHostException;
 * 2.切换微服务 勾选profile的SpringCloud，这个类就无法启动，启动会报错
 */
 @Slf4j
-@SpringBootApplication
-@EnableAutoConfiguration(exclude={MongoAutoConfiguration.class})
+@SpringBootApplication(exclude={MongoAutoConfiguration.class})
+//@EnableAutoConfiguration(exclude={MongoAutoConfiguration.class})
 public class JeecgSystemApplication extends SpringBootServletInitializer {
 
     @Override

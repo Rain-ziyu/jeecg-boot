@@ -17,10 +17,8 @@ import javax.annotation.Resource;
 @EnableDiscoveryClient
 @SpringBootApplication
 public class JeecgGatewayApplication  implements CommandLineRunner {
-
     @Resource
     private DynamicRouteLoader dynamicRouteLoader;
-
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(JeecgGatewayApplication.class, args);
         String userName = applicationContext.getEnvironment().getProperty("jeecg.test");

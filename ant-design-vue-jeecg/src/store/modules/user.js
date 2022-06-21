@@ -77,6 +77,7 @@ const user = {
     // 登录
     Login({ commit }, userInfo) {
       return new Promise((resolve, reject) => {
+        debugger;
         login(userInfo).then(response => {
           if(response.code =='200'){
             const result = response.result
@@ -161,6 +162,7 @@ const user = {
 
     // 登出
     Logout({ commit, state }) {
+      debugger;
       return new Promise((resolve) => {
         let logoutToken = state.token;
         commit('SET_TOKEN', '')

@@ -21,7 +21,7 @@ spring:
       discovery:
         server-addr: @config.server-addr@
         metadata:
-          user.name: ${spring.security.user.name}
+          user.name: ${spring.security.user.name} #读取security所配置的用户名与密码
           user.password: ${spring.security.user.password}
 # 服务端点检查
 management:

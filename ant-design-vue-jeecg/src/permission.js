@@ -21,8 +21,10 @@ router.beforeEach((to, from, next) => {
       next({ path: INDEX_MAIN_PAGE_PATH })
       NProgress.done()
     } else {
+      debugger
       if (store.getters.permissionList.length === 0) {
         store.dispatch('GetPermissionList').then(res => {
+          debugger
               const menuData = res.result.menu;
               //console.log(res.message)
               if (menuData === null || menuData === "" || menuData === undefined) {

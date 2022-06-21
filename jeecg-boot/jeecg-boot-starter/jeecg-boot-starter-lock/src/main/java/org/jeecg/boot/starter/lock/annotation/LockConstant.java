@@ -12,7 +12,9 @@ package org.jeecg.boot.starter.lock.annotation;
 public enum LockConstant {
     /**
      * 通用锁常量
+     * 定义一个通用类型的锁，用枚举类型的构造方法，为他定义属性值
      */
+
     COMMON("commonLock:", 1, 500, "请勿重复点击");
     /**
      * 分布式锁前缀
