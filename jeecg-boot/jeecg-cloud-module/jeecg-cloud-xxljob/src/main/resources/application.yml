@@ -49,6 +49,8 @@ spring:
     request-context-attribute: request
     settings:
       number_format: 0.##########
+  aop:
+    proxy-target-class: false
 #通用配置，开放端点
 management:
   server:
@@ -66,7 +68,7 @@ xxl:
     login:
       username: admin
       password: 123456
-    accessToken:
+    accessToken: yudaoyuanma
     i18n: zh_CN
     #触发池
     triggerpool:

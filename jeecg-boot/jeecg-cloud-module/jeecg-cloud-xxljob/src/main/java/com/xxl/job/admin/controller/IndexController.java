@@ -3,6 +3,7 @@ package com.xxl.job.admin.controller;
 import com.xxl.job.admin.controller.annotation.PermissionLimit;
 import com.xxl.job.admin.service.LoginService;
 import com.xxl.job.admin.service.XxlJobService;
+import com.xxl.job.admin.service.impl.XxlJobServiceImpl;
 import com.xxl.job.core.biz.model.ReturnT;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -32,16 +33,17 @@ public class IndexController {
 	@Resource
 	private LoginService loginService;
 
-
+//系统首页
 	@RequestMapping("/")
 	public String index(Model model) {
-
 		Map<String, Object> dashboardMap = xxlJobService.dashboardInfo();
 		model.addAllAttributes(dashboardMap);
-
+//该界面是同ftl模板引擎实现
 		return "index";
 	}
-
+/**
+ * 首页图表所需的数据，交由前端进行渲染
+ */
     @RequestMapping("/chartInfo")
 	@ResponseBody
 	public ReturnT<Map<String, Object>> chartInfo(Date startDate, Date endDate) {
@@ -61,6 +63,9 @@ public class IndexController {
 	@RequestMapping(value="login", method=RequestMethod.POST)
 	@ResponseBody
 	@PermissionLimit(limit=false)
+	/**
+	 * 检验用户登录，并为用户设置token值，通过jackson来生成token，这样反序列化能直接获得该用户的实体
+	 */
 	public ReturnT<String> loginDo(HttpServletRequest request, HttpServletResponse response, String userName, String password, String ifRemember){
 		boolean ifRem = (ifRemember!=null && ifRemember.trim().length()>0 && "on".equals(ifRemember))?true:false;
 		return loginService.login(request, response, userName, password, ifRem);
@@ -84,6 +89,9 @@ public class IndexController {
 	}
 
 	@InitBinder
+	/**
+	 * 自定义属性编辑器，用于将yyyy-MM-dd HH:mm:ss格式的字符串转化为日期类型
+	 */
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		dateFormat.setLenient(false);

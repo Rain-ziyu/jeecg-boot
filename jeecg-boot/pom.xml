@@ -376,6 +376,11 @@
                 <artifactId>maven-resources-plugin</artifactId>
 				 <version>3.1.0</version>
                 <configuration>
+					<encoding>UTF-8</encoding>
+					<delimiters>
+						<delimiter>@</delimiter>
+					</delimiters>
+					<useDefaultDelimiters>false</useDefaultDelimiters>
                     <nonFilteredFileExtensions>
                         <nonFilteredFileExtension>woff</nonFilteredFileExtension>
                         <nonFilteredFileExtension>woff2</nonFilteredFileExtension>

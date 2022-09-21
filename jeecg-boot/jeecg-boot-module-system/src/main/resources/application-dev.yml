@@ -260,8 +260,8 @@ jeecg:
       data-type: database
   #分布式锁配置
   redisson:
-    address: 127.0.0.1:6379
-    password:
+    address: yzzy.top:6379
+    password: redis
     type: STANDALONE
     enabled: true
 #cas单点登录

@@ -34,6 +34,14 @@ public class JeecgSystemCloudApplication extends SpringBootServletInitializer im
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
+    /**
+     * 方法configure
+     * 作用为：向Spring注册实现了CommandLineRunner的Run方法的子类的bean
+     * @author User
+      * @param application
+     * @throws
+     * @return org.springframework.boot.builder.SpringApplicationBuilder
+     */
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(JeecgSystemCloudApplication.class);
@@ -51,12 +59,11 @@ public class JeecgSystemCloudApplication extends SpringBootServletInitializer im
                 "External: \thttp://" + ip + ":" + port + path + "/doc.html\n" +
                 "Swagger文档: \thttp://" + ip + ":" + port + path + "/doc.html\n" +
                 "----------------------------------------------------------");
-
     }
 
     /**
      * 启动的时候，触发下gateway网关刷新
-     *
+     * 改方法继承自CommandLineRunner接口，该接口用于在spring启动之后去执行一块代码逻辑，该初始化代码在生命周期内只会执行一次
      * 解决： 先启动gateway后启动服务，Swagger接口文档访问不通的问题
      * @param args
      */

@@ -55,6 +55,7 @@ public class JobApiController {
 
         // services mapping
         if ("callback".equals(uri)) {
+                                                          //json 转成 特定的 rawClass  的Object，即从json类型转化为List<HandleCallbackParam>
             List<HandleCallbackParam> callbackParamList = GsonTool.fromJson(data, List.class, HandleCallbackParam.class);
             return adminBiz.callback(callbackParamList);
         } else if ("registry".equals(uri)) {
